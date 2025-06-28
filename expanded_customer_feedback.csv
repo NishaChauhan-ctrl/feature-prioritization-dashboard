@@ -1,0 +1,7 @@
+id,text,source,customer_tier,nps_score,cluster,tier_weight
+1,Can you add single sign-on for large teams?,Zendesk,Enterprise,7,-1,3
+2,The dark mode feature would be amazing!,Canny,Free,9,-1,1
+3,Mobile app crashes often,Support Ticket,SMB,4,-1,2
+4,Hard to manage permissions across projects,Intercom,Enterprise,6,-1,3
+5,"Love the new UI updates, thank you!",Email,Free,10,-1,1
+6,Request for Jira integration with auto-sync,Gong Call,SMB,8,-1,2
