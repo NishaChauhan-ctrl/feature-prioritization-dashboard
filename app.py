@@ -9,6 +9,20 @@ df = pd.read_csv("clustered_prioritization.csv")
 st.set_page_config(page_title="Feature Prioritization", layout="wide")
 st.title("📊 AI-Powered Feature Prioritization")
 
+st.markdown("""
+### 🤖 What This App Does
+This app uses AI to analyze raw customer feedback and automatically **prioritize product features**.
+
+It does this by:
+- 🧠 Clustering similar requests using NLP
+- 📝 Summarizing feature themes
+- 📊 Scoring each group based on **frequency**, **NPS**, and **customer tier**
+- 🎯 Helping Product Managers focus on what matters most
+
+Use the filters in the sidebar to explore high-impact features!
+
+---
+""")
 
 # Sidebar filters
 st.sidebar.header("🔍 Filter Features")
