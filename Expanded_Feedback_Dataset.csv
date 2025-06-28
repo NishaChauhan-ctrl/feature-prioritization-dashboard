@@ -1,0 +1,26 @@
+id,text,source,customer_tier,nps_score
+1,Single sign-on (SSO) support for enterprise accounts,Zendesk,Enterprise,7
+2,Add dark mode for better night-time use,Canny,Free,9
+3,Mobile app crashes when switching tabs,Support Ticket,SMB,4
+4,Permissions are hard to configure for teams,Intercom,Enterprise,6
+5,UI is much cleaner after the last update,Email,Free,10
+6,Need integration with Jira for task syncing,Gong Call,SMB,8
+7,Slack notifications are delayed,Support Ticket,Free,5
+8,Request for two-factor authentication,Canny,Enterprise,9
+9,New dashboard is confusing,Support Ticket,SMB,3
+10,Google Calendar integration would be helpful,Zendesk,SMB,8
+11,Better export options for reports,Email,Enterprise,7
+12,Search feature doesn't return relevant results,Intercom,Free,5
+13,Option to duplicate projects would save time,Canny,SMB,8
+14,Add Microsoft Teams integration,Support Ticket,Enterprise,6
+15,Need ability to archive old tasks,Gong Call,Free,6
+16,Reports page takes too long to load,Support Ticket,SMB,4
+17,Keyboard shortcuts would improve productivity,Canny,Free,7
+18,Project-level permissions are unclear,Zendesk,Enterprise,6
+19,Would like a mobile-friendly Kanban board,Email,SMB,7
+20,Bug: Comments not saving on Android app,Support Ticket,Free,4
+21,Provide onboarding checklist for new users,Intercom,Free,8
+22,Allow export of all tasks to Excel,Canny,SMB,7
+23,Notification center needs better filtering,Gong Call,Enterprise,6
+24,Support multi-language UI for global teams,Support Ticket,Enterprise,9
+25,Allow tagging people in project notes,Canny,Free,7
