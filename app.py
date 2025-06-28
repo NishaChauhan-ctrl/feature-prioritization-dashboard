@@ -7,27 +7,26 @@ full_feedback = pd.read_csv("expanded_customer_feedback.csv")
 
 tier_label = {1: "Free", 2: "SMB", 3: "Enterprise"}
 
-# Set up page
+# Page setup
 st.set_page_config(page_title="AI Feature Prioritization", layout="wide")
 st.title("📊 AI-Powered Feature Prioritization Dashboard")
 
-# 🧠 Overview
+# 🧠 App Overview
 st.markdown("""
 ### 🤖 What This App Does
 
-This tool uses AI to help Product Managers decide what features to build next — based on what users are saying.
+This dashboard uses AI to turn messy customer feedback into clear feature priorities.
 
 Here's how it works:
-- We clustered **100 real user feedback comments** into feature themes
-- Each theme is ranked based on **impact score**
-- You can filter by how often a feature is mentioned, how satisfied the users were, and who (Free, SMB, Enterprise) asked for it
+- Groups similar user comments into **feature themes**
+- Scores each theme based on **who said it, how often, and how happy they were**
+- Lets you **filter** to explore what matters most
 
-#### 📈 Metric Breakdown:
-- **NPS (Net Promoter Score)**: How happy users are (1–10 scale)
-- **Frequency**: How many users mentioned this theme
-- **Tier Weight**: How heavy the request is (Free = 1, SMB = 2, Enterprise = 3)
-- **Score Formula**: `Frequency × (1 + Tier Weight) × NPS ÷ 10`
-
+#### 🔍 Metric Cheat Sheet:
+- **NPS**: How happy users are (1–10 scale)
+- **Frequency**: How many users mentioned it
+- **Tier Weight**: Free = 1, SMB = 2, Enterprise = 3
+- **Score** = Frequency × (1 + Tier Weight) × NPS ÷ 10
 ---
 """)
 
@@ -65,8 +64,7 @@ else:
         nps = round(row["avg_nps"], 2)
         tier = round(row["avg_tier_weight"], 2)
         score = round(row["score"], 2)
-        
-        # Show feedback examples from full dataset
+
         examples = full_feedback[full_feedback["cluster"] == cluster_id]["text"].tolist()
 
         st.markdown(f"""
@@ -76,14 +74,18 @@ else:
         - 🗣️ Mentioned by **{freq}** users  
         - 🧲 Avg Tier: **{tier}** ({tier_label.get(round(tier), "Mixed")})  
         - 😊 Avg NPS: **{nps}**  
-        - 📈 **Impact Score** = {freq} × (1 + {tier}) × {nps} ÷ 10 = **{score}**
+        - 📈 Score = {freq} × (1 + {tier}) × {nps} ÷ 10 = **{score}**
 
         **Example Feedback:**
         """)
-        for ex in examples[:3]:
-            st.markdown(f"- “{ex}”")
 
-# 📥 CSV Export
+        if examples:
+            for ex in examples[:5]:  # Limit to top 5 examples
+                st.markdown(f"- “{ex}”")
+        else:
+            st.markdown("_No sample feedback available for this cluster._")
+
+# 📥 Download
 st.download_button(
     label="📥 Download Filtered Priorities as CSV",
     data=filtered.to_csv(index=False),
