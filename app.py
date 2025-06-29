@@ -59,7 +59,6 @@ if filtered.empty:
 else:
     for _, row in filtered.iterrows():
         cluster_id = row["cluster_id"]
-        summary = row["summary"]
         freq = int(row["frequency"])
         nps = round(row["avg_nps"], 2)
         tier = round(row["avg_tier_weight"], 2)
@@ -67,20 +66,21 @@ else:
 
         examples = full_feedback[full_feedback["cluster"] == cluster_id]["text"].tolist()
 
+        # --- Display Cluster ---
         st.markdown(f"""
         ---
-        ### 🧠 **{summary}**
+        ### 🧠 Feature Cluster {cluster_id}
         **Why this matters:**  
         - 🗣️ Mentioned by **{freq}** users  
         - 🧲 Avg Tier: **{tier}** ({tier_label.get(round(tier), "Mixed")})  
         - 😊 Avg NPS: **{nps}**  
         - 📈 Score = {freq} × (1 + {tier}) × {nps} ÷ 10 = **{score}**
-
-        **Example Feedback:**
         """)
 
+        # Show example feedback as bullet points
         if examples:
-            for ex in examples[:5]:  # Limit to top 5 examples
+            st.markdown("**Top User Comments in This Cluster:**")
+            for ex in examples[:5]:
                 st.markdown(f"- “{ex}”")
         else:
             st.markdown("_No sample feedback available for this cluster._")
